@@ -33,11 +33,6 @@
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
-        <!-- Guizhan CraftRepo (Para SlimefunTranslation API) -->
-        <repository>
-            <id>guizhanss-repo</id>
-            <url>https://repo.guizhanss.cn/repository/maven-public/</url>
-        </repository>
     </repositories>
 
     <dependencies>
@@ -89,7 +84,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Slimefun Translation API -->
+        <!-- Slimefun Translation API (Se instala dinámicamente en GitHub Actions) -->
         <dependency>
             <groupId>net.guizhanss</groupId>
             <artifactId>SlimefunTranslation</artifactId>
