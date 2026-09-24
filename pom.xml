@@ -18,20 +18,25 @@
     </properties>
 
     <repositories>
-        <!-- Repositorio de PaperMC -->
+        <!-- PaperMC Repo -->
         <repository>
             <id>papermc-repo</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
-        <!-- Repositorio de JitPack -->
+        <!-- JitPack Repo -->
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+        <!-- PlaceholderAPI Repo -->
+        <repository>
+            <id>placeholderapi</id>
+            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+        </repository>
     </repositories>
 
     <dependencies>
-        <!-- Paper API 1.20.4 -->
+        <!-- Paper API -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
@@ -47,12 +52,44 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- InfinityLib desde JitPack (Apuntando a la rama master activa) -->
+        <!-- InfinityLib -->
         <dependency>
             <groupId>com.github.Mooy1</groupId>
             <artifactId>InfinityLib</artifactId>
             <version>master-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.32</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- bStats -->
+        <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>3.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- PlaceholderAPI -->
+        <dependency>
+            <groupId>me.clip</groupId>
+            <artifactId>placeholderapi</artifactId>
+            <version>2.11.6</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Slimefun Translation API -->
+        <dependency>
+            <groupId>com.github.guizhanss</groupId>
+            <artifactId>SlimefunTranslation</artifactId>
+            <version>v0.2.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -67,17 +104,24 @@
         </resources>
 
         <plugins>
-            <!-- Compiler Plugin (Java 21) -->
+            <!-- Compiler Plugin con soporte para Annotation Processors (Lombok) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
                     <release>21</release>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.32</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 
-            <!-- Shade Plugin para empaquetar InfinityLib dentro del JAR -->
+            <!-- Shade Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -93,6 +137,10 @@
                                 <relocation>
                                     <pattern>io.github.mooy1.infinitylib</pattern>
                                     <shadedPattern>io.github.schntgaispock.slimehud.infinitylib</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.bstats</pattern>
+                                    <shadedPattern>io.github.schntgaispock.slimehud.bstats</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
