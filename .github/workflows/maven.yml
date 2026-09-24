@@ -20,11 +20,10 @@ jobs:
           java-version: "21"
           distribution: "temurin"
 
-      # Paso agregado para resolver la dependencia que falla en Maven
       - name: Download & Install SlimefunTranslation API
         run: |
           mkdir -p libs
-          curl -L -o libs/SlimefunTranslation.jar https://github.com/guizhanss/SlimefunTranslation/releases/download/v0.2.1/SlimefunTranslation-v0.2.1.jar
+          curl -fsSL https://github.com/guizhanss/SlimefunTranslation/releases/download/v0.2.1/SlimefunTranslation-v0.2.1.jar -o libs/SlimefunTranslation.jar
           mvn install:install-file -Dfile=libs/SlimefunTranslation.jar -DgroupId=net.guizhanss -DartifactId=SlimefunTranslation -Dversion=v0.2.1 -Dpackaging=jar
 
       - name: Build with Maven
