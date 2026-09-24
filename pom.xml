@@ -23,7 +23,7 @@
             <id>papermc-repo</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
-        <!-- JitPack Repo -->
+        <!-- JitPack Repo (Slimefun / InfinityLib) -->
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
@@ -36,11 +36,11 @@
     </repositories>
 
     <dependencies>
-        <!-- Paper API -->
+        <!-- Paper API 1.21.1 -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.20.4-R0.1-SNAPSHOT</version>
+            <version>1.21.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -83,14 +83,6 @@
             <version>2.11.6</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- Slimefun Translation API (Se instala dinámicamente en GitHub Actions) -->
-        <dependency>
-            <groupId>net.guizhanss</groupId>
-            <artifactId>SlimefunTranslation</artifactId>
-            <version>v0.2.1</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -104,7 +96,7 @@
         </resources>
 
         <plugins>
-            <!-- Compiler Plugin con soporte para Annotation Processors (Lombok) -->
+            <!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
